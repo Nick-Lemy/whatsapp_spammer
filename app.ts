@@ -4,7 +4,8 @@ import { spawn } from "child_process";
 async function sendWhatsAppMessage(
   contact: string = "You",
   message: string = "Hello from Nick's Spammer",
-  port: number = 3005
+  port: number = 3005,
+  numberOfMessages: number = 1000
 ) {
   const browser = await puppeteer.connect({
     browserURL: `http://localhost:${port}`,
@@ -45,7 +46,7 @@ async function sendWhatsAppMessage(
   if (!messageBox) throw new Error("Could not find message box");
 
   await messageBox.focus();
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 1; i <= numberOfMessages; i++) {
     await messageBox.type(`${message} ${i}`);
     await page.keyboard.press("Enter");
   }
@@ -76,7 +77,10 @@ const args = process.argv.slice(2);
 const contact = args[0];
 const message = args[1];
 const port = args[2] ? parseInt(args[2], 10) : 3005;
+const numberOfMessages = args[3] ? parseInt(args[3], 10) : 1000;
 
 launchChrome(port).then(() => {
-  sendWhatsAppMessage(contact, message, port).catch(console.error);
+  sendWhatsAppMessage(contact, message, port, numberOfMessages).catch(
+    console.error
+  );
 });
