@@ -1,17 +1,27 @@
 {
-  "name": "playwright-try",
+  "name": "whatsapp-spammer-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node app.ts",
-    "build": "tsc app.ts",
-    "start": "node app.js"
+  "description": "A CLI tool to send automated WhatsApp messages",
+  "main": "app.js",
+  "bin": {
+    "whatsapp-spammer": "./app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "dev": "ts-node app.ts",
+    "build": "tsc && node add-shebang.js",
+    "start": "node app.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "whatsapp",
+    "cli",
+    "automation",
+    "puppeteer",
+    "spam",
+    "spammer"
+  ],
+  "author": "Nick-Lemy <nicklemykayiranga@gmail.com>",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^24.9.1",
@@ -21,5 +31,12 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "puppeteer-core": "^24.26.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nick-Lemy/whatsapp_spammer.git"
   }
 }
