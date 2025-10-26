@@ -47,7 +47,7 @@ async function sendWhatsAppMessage(
 
   await messageBox.focus();
   for (let i = 1; i <= numberOfMessages; i++) {
-    await messageBox.type(`${message} ${i}`);
+    await messageBox.type(`${message}`);
     await page.keyboard.press("Enter");
   }
 
