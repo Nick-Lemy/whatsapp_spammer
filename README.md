@@ -21,15 +21,15 @@ npm install
 Run the script with the following command:
 
 ```bash
-npm run dev <contact> <message> [port] [numberOfMessages]
+npm run dev <contact> <message> [--port PORT] [--count NUMBER]
 ```
 
 ### Arguments
 
 - `contact` (required): The name of the contact as it appears in WhatsApp
 - `message` (required): The message to send (use quotes for multi-word messages)
-- `port` (optional): Chrome remote debugging port (default: 3005)
-- `numberOfMessages` (optional): Number of messages to send (default: 1000)
+- `--port` or `-p` (optional): Chrome remote debugging port (default: 3005)
+- `--count` or `-c` or `--messages` or `-m` (optional): Number of messages to send (default: 1000)
 
 ### Examples
 
@@ -38,13 +38,19 @@ npm run dev <contact> <message> [port] [numberOfMessages]
 npm run dev "John Doe" "Hello there!"
 
 # Send only 10 messages
-npm run dev zkaynl7 "Testing 123" 3005 10
+npm run dev zkaynl7 "Testing 123" --count 10
 
 # Custom port with 500 messages
-npm run dev Mom "Miss you" 9222 500
+npm run dev Mom "Miss you" --port 9222 --count 500
 
-# Just 5 messages on default port
-npm run dev "Best Friend" "Spam test" 3005 5
+# Just custom port (default 1000 messages)
+npm run dev "Best Friend" "Spam test" --port 9222
+
+# Using short flags
+npm run dev "John" "Hello" -p 3005 -c 50
+
+# Mix and match flags in any order
+npm run dev "Alice" "Test message" --count 20 --port 9000
 ```
 
 ## Alternative: Build and Run
@@ -56,14 +62,14 @@ You can also build the TypeScript file and run the compiled JavaScript:
 npm run build
 
 # Run
-npm start <contact> <message> [port] [numberOfMessages]
+npm start <contact> <message> [--port PORT] [--count NUMBER]
 ```
 
 Example:
 
 ```bash
 npm run build
-npm start zkaynl7 "Hello World" 3005 100
+npm start zkaynl7 "Hello World" --port 3005 --count 100
 ```
 
 ## How it works
