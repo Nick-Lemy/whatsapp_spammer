@@ -34,10 +34,8 @@ for (let i = 2; i < args.length; i++) {
 
 async function main() {
   try {
-    await Promise.all([
-      launchChrome(port),
-      sendWhatsappMessage(contact, message, port, numberOfMessages),
-    ]);
+    await launchChrome(port);
+    await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
     console.error("Error:", error);
     process.exit(1);
