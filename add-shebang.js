@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const filePath = path.join(__dirname, 'app.js');
+const filePath = path.join(process.cwd(), 'app.js');
 const content = fs.readFileSync(filePath, 'utf8');
 
 if (!content.startsWith('#!/usr/bin/env node')) {
