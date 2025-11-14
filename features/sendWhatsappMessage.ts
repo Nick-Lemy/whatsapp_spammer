@@ -11,12 +11,19 @@ const sendWhatsappMessage = async (
   });
 
   const pages = await browser.pages();
+
   const page = pages[0];
 
-  await page.goto("https://web.whatsapp.com", { waitUntil: "networkidle2" });
+  await page.goto("https://web.whatsapp.com", {
+    waitUntil: "networkidle2",
+    timeout: 120000,
+  });
 
   const searchSelector = 'div[contenteditable="true"][data-tab="3"]';
-  await page.waitForSelector(searchSelector, { visible: true, timeout: 60000 });
+  await page.waitForSelector(searchSelector, {
+    visible: true,
+    timeout: 120000,
+  });
 
   const searchBox = await page.$(searchSelector);
   if (!searchBox) throw new Error("Could not find the search box");
