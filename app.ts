@@ -37,8 +37,7 @@ async function main() {
     await launchChrome(port);
     await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
-    console.error("Error:", error);
-    process.exit(1);
+    throw error;
   }
 }
 

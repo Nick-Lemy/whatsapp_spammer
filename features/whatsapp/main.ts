@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer-core";
+import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../utils/contants";
 
 const sendWhatsappMessage = async (
   contact: string = "You",
@@ -11,12 +12,19 @@ const sendWhatsappMessage = async (
   });
 
   const pages = await browser.pages();
+
   const page = pages[0];
 
-  await page.goto("https://web.whatsapp.com", { waitUntil: "networkidle2" });
+  await page.goto("https://web.whatsapp.com", {
+    waitUntil: "networkidle2",
+    timeout: WHATSAPP_LOAD_TIMEOUT_MS,
+  });
 
   const searchSelector = 'div[contenteditable="true"][data-tab="3"]';
-  await page.waitForSelector(searchSelector, { visible: true, timeout: 60000 });
+  await page.waitForSelector(searchSelector, {
+    visible: true,
+    timeout: WHATSAPP_LOAD_TIMEOUT_MS,
+  });
 
   const searchBox = await page.$(searchSelector);
   if (!searchBox) throw new Error("Could not find the search box");
@@ -34,7 +42,7 @@ const sendWhatsappMessage = async (
     try {
       messageBox = await page.waitForSelector(sel, {
         visible: true,
-        timeout: 5000,
+        timeout: WHATSAPP_LOAD_TIMEOUT_MS,
       });
       if (messageBox) break;
     } catch {
