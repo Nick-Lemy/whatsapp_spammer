@@ -1,4 +1,4 @@
-import launchChrome from "./chrome/launchChrome";
-import sendWhatsappMessage from "./whatsapp/sendWhatsappMessage";
+import launchChrome from "./chrome/main";
+import sendWhatsappMessage from "./whatsapp/main";
 
 export { launchChrome, sendWhatsappMessage };
