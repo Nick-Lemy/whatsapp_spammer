@@ -13,7 +13,7 @@ const launchChrome = (port: number = 3005) => {
   chrome.unref();
   console.log("Chrome launched with PID:", chrome.pid);
 
-  return new Promise((resolve) => setTimeout(resolve, 3000));
+  return new Promise((resolve) => setTimeout(resolve, 2000));
 };
 
 export default launchChrome;
