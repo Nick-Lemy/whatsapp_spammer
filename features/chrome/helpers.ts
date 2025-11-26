@@ -32,13 +32,13 @@ const getChromePath = (): string | null => {
 };
 
 
-const commandExists = (command: string, os: NodeJS.Platform): string | boolean=> {
+const commandExists = (command: string, os: NodeJS.Platform): string | null=> {
   try {
     const finalCommand = os === "darwin" || os === "linux" ? `which ${command}` : `where ${command}`;
     const result = execSync(finalCommand, { encoding: "utf-8" }).trim();
     return result;
   } catch {
-    return false;
+    return null;
   }
 };
 
