@@ -1,4 +1,4 @@
-import { existsSync } from "fs";
+import { execSync } from "child_process";
 import { platform } from "os";
 
 const getChromePath = (): string | null => {
@@ -10,15 +10,11 @@ const getChromePath = (): string | null => {
       "chromium",
     ],
     darwin: [
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      "/Applications/Chromium.app/Contents/MacOS/Chromium",
+      "google-chrome",
+      "chromium",
     ],
     win32: [
-      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-      "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-      `${process.env.LOCALAPPDATA}\\Google\\Chrome\\Application\\chrome.exe`,
-      `${process.env.PROGRAMFILES}\\Google\\Chrome\\Application\\chrome.exe`,
-      `${process.env["PROGRAMFILES(X86)"]}\\Google\\Chrome\\Application\\chrome.exe`,
+      "chrome.exe",
     ],
   };
 
@@ -26,19 +22,24 @@ const getChromePath = (): string | null => {
   const osPaths = paths[os] || paths.linux;
 
   for (const path of osPaths) {
-    // On Linux/Mac, check if command exists in PATH
-    if (os === "linux" || os === "darwin") {
-      if (!path.includes("/")) {
-        return path; // Assume it's in PATH
+    const result = commandExists(path, os);
+      if (result) {
+        return typeof result === "string" ? result : path;
       }
-    }
-    // Check if file exists
-    if (existsSync(path)) {
-      return path;
-    }
   }
 
   return null;
+};
+
+
+const commandExists = (command: string, os: NodeJS.Platform): string | null => {
+  try {
+    const finalCommand = os === "darwin" || os === "linux" ? `which ${command}` : `where ${command}`;
+    const result = execSync(finalCommand, { encoding: "utf-8" }).trim();
+    return result;
+  } catch {
+    return null;
+  }
 };
 
 export { getChromePath };
