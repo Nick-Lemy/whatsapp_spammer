@@ -15,11 +15,7 @@ const getChromePath = (): string | null => {
       "chromium",
     ],
     win32: [
-      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-      "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-      `${process.env.LOCALAPPDATA}\\Google\\Chrome\\Application\\chrome.exe`,
-      `${process.env.PROGRAMFILES}\\Google\\Chrome\\Application\\chrome.exe`,
-      `${process.env["PROGRAMFILES(X86)"]}\\Google\\Chrome\\Application\\chrome.exe`,
+      "chrome.exe",
     ],
   };
 
@@ -28,25 +24,21 @@ const getChromePath = (): string | null => {
 
   for (const path of osPaths) {
     // On Linux/Mac, check if command exists in PATH
-    if (os === "linux" || os === "darwin") {
-      if (commandExists(path)) {
-        return path;
+    const result = commandExists(path, os);
+      if (result) {
+        return typeof result === "string" ? result : path;
       }
-    }
-    // Check if file exists for Windows paths
-    if (existsSync(path)) {
-      return path;
-    }
   }
 
   return null;
 };
 
 
-const commandExists = (command: string): boolean => {
+const commandExists = (command: string, os: NodeJS.Platform): string | boolean=> {
   try {
-    execSync(`which ${command}`, { stdio: "ignore" });
-    return true;
+    const finalCommand = os === "darwin" || os === "linux" ? `which ${command}` : `where ${command}`;
+    const result = execSync(finalCommand, { encoding: "utf-8" }).trim();
+    return result;
   } catch {
     return false;
   }
