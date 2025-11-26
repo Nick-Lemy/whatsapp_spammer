@@ -23,7 +23,6 @@ const getChromePath = (): string | null => {
   const osPaths = paths[os] || paths.linux;
 
   for (const path of osPaths) {
-    // On Linux/Mac, check if command exists in PATH
     const result = commandExists(path, os);
       if (result) {
         return typeof result === "string" ? result : path;
