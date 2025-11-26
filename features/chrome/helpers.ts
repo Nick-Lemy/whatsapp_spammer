@@ -11,8 +11,8 @@ const getChromePath = (): string | null => {
       "chromium",
     ],
     darwin: [
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      "/Applications/Chromium.app/Contents/MacOS/Chromium",
+      "google-chrome",
+      "chromium",
     ],
     win32: [
       "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -24,16 +24,13 @@ const getChromePath = (): string | null => {
   };
 
   const os = platform();
-  console.log(os)
   const osPaths = paths[os] || paths.linux;
-  console.log(osPaths)
 
   for (const path of osPaths) {
     // On Linux/Mac, check if command exists in PATH
-    console.log(existsSync(path))
     if (os === "linux" || os === "darwin") {
       if (commandExists(path)) {
-        return path; // Assume it's in PATH
+        return path;
       }
     }
     // Check if file exists
