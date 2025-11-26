@@ -33,7 +33,7 @@ const getChromePath = (): string | null => {
         return path;
       }
     }
-    // Check if file exists
+    // Check if file exists for Windows paths
     if (existsSync(path)) {
       return path;
     }
