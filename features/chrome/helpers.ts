@@ -1,3 +1,4 @@
+import { execSync } from "child_process";
 import { existsSync } from "fs";
 import { platform } from "os";
 
@@ -23,12 +24,15 @@ const getChromePath = (): string | null => {
   };
 
   const os = platform();
+  console.log(os)
   const osPaths = paths[os] || paths.linux;
+  console.log(osPaths)
 
   for (const path of osPaths) {
     // On Linux/Mac, check if command exists in PATH
+    console.log(existsSync(path))
     if (os === "linux" || os === "darwin") {
-      if (!path.includes("/")) {
+      if (commandExists(path)) {
         return path; // Assume it's in PATH
       }
     }
@@ -39,6 +43,16 @@ const getChromePath = (): string | null => {
   }
 
   return null;
+};
+
+
+const commandExists = (command: string): boolean => {
+  try {
+    execSync(`which ${command}`, { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
 };
 
 export { getChromePath };
