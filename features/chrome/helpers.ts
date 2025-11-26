@@ -1,5 +1,4 @@
 import { execSync } from "child_process";
-import { existsSync } from "fs";
 import { platform } from "os";
 
 const getChromePath = (): string | null => {
