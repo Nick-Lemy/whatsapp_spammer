@@ -44,7 +44,10 @@ async function main() {
     await launchBrowser(port, browser);
     await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
-    throw error;
+    console.error(
+      "Unexpected error occurred:", (error as Error).message
+    );
+    process.exit(1);
   }
 }
 
