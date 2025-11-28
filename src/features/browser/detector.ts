@@ -23,7 +23,7 @@ const commandExists = (command: string, os: NodeJS.Platform): string | null => {
       os === "darwin" || os === "linux"
         ? `which ${command}`
         : `where ${command}`;
-    const result = execSync(finalCommand, { encoding: "utf-8" }).trim();
+    const result = execSync(finalCommand, { encoding: "utf-8",  stdio: ['pipe', 'pipe', 'ignore']}).trim();
     return result;
   } catch {
     return null;
