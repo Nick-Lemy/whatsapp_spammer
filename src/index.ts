@@ -4,9 +4,11 @@ import { launchBrowser, sendWhatsappMessage } from "./features";
 const args = process.argv.slice(2);
 if (args.length < 2) {
   console.error(
-    "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER]"
+    "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]"
   );
-  console.error("Example: npm run dev 'John' 'Hello' --port 3005 --count 10");
+  console.error(
+    "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome"
+  );
   process.exit(1);
 }
 
