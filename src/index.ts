@@ -15,7 +15,7 @@ if (args.length < 2) {
 const [contact, message] = args;
 
 let port = 3005;
-let numberOfMessages = 1000;
+let numberOfMessages = 1;
 let browser: string | null = null;
 
 for (let i = 2; i < args.length; i++) {
