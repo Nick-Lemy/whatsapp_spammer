@@ -2,7 +2,6 @@ import { spawn } from "child_process";
 import { platform } from "os";
 import { detectBrowser } from "./detector";
 
-
 const launchBrowser = (port: number = 3005, browser?: string | null) => {
   const chromePath = browser ? browser : detectBrowser();
 

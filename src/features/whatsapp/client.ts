@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../../utils/contants";
+import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../shared/contants";
 import { messageBoxSelectorCandidates, searchSelector } from "./selectors";
 
 const sendWhatsappMessage = async (
@@ -22,7 +22,6 @@ const sendWhatsappMessage = async (
     timeout: WHATSAPP_LOAD_TIMEOUT_MS,
   });
 
-
   const searchBox = await page.$(searchSelector);
   if (!searchBox) throw new Error("Could not find the search box");
   await searchBox.click({ clickCount: 3 });
@@ -43,7 +42,6 @@ const sendWhatsappMessage = async (
   }
   if (!messageBox) throw new Error("Could not find message box");
   await messageBox.focus();
-
 
   for (let i = 1; i <= numberOfMessages; i++) {
     await messageBox.type(`${message}`);
