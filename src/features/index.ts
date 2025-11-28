@@ -1,4 +1,4 @@
 import { launchBrowser } from "./browser";
-import sendWhatsappMessage from "./whatsapp/main";
+import sendWhatsappMessage from "./whatsapp/client";
 
 export { launchBrowser, sendWhatsappMessage };
