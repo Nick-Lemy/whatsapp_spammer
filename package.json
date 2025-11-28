@@ -2,9 +2,9 @@
   "name": "whatsapp-spammer-cli",
   "version": "1.1.3",
   "description": "A CLI tool to send automated WhatsApp messages",
-  "main": "build/app.js",
+  "main": "build/index.js",
   "bin": {
-    "whatsapp-spammer": "./build/app.js"
+    "whatsapp-spammer": "./build/index.js"
   },
   "scripts": {
     "dev": "ts-node ./src/index.ts",
