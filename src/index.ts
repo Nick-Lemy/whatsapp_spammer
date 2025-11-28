@@ -3,7 +3,6 @@ import process from "node:process";
 import { launchBrowser, sendWhatsappMessage } from "./features";
 
 const args = process.argv.slice(2);
-
 if (args.length < 2) {
   console.error(
     "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER]"
@@ -12,8 +11,7 @@ if (args.length < 2) {
   process.exit(1);
 }
 
-const contact = args[0];
-const message = args[1];
+const [contact, message] = args;
 
 let port = 3005;
 let numberOfMessages = 1000;
