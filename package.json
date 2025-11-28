@@ -7,8 +7,8 @@
     "whatsapp-spammer": "./build/app.js"
   },
   "scripts": {
-    "dev": "ts-node app.ts",
-    "build": "tsc --outDir ./build --target ES2020 --module commonjs",
+    "dev": "ts-node ./src/index.ts",
+    "build": "tsc ./src/index.ts --outDir ./build --target ES2020 --module commonjs",
     "start": "node ./build/app.js",
     "prepublishOnly": "npm run build"
   },
