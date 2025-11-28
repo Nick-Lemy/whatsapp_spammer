@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../utils/contants";
+import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../../utils/contants";
 
 const sendWhatsappMessage = async (
   contact: string = "You",

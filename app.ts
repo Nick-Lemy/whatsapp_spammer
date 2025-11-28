@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import process from "node:process";
-import { launchChrome, sendWhatsappMessage } from "./features";
+import { launchChrome, sendWhatsappMessage } from "./src/features";
 
 const args = process.argv.slice(2);
 
