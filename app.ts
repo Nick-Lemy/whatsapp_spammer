@@ -17,6 +17,7 @@ const message = args[1];
 
 let port = 3005;
 let numberOfMessages = 1000;
+let browser: string | null = null;
 
 for (let i = 2; i < args.length; i++) {
   if (args[i] === "--port" || args[i] === "-p") {
@@ -30,12 +31,15 @@ for (let i = 2; i < args.length; i++) {
   ) {
     numberOfMessages = parseInt(args[i + 1], 10);
     i++;
+  } else if(args[i] === '--browser' || args[i] === '-b') {
+    browser = args[i + 1];
+    i++;
   }
 }
 
 async function main() {
   try {
-    await launchChrome(port);
+    await launchChrome(port, browser);
     await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
     throw error;

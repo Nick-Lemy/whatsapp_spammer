@@ -2,8 +2,8 @@ import { spawn } from "child_process";
 import { platform } from "os";
 import { getChromePath } from "./helpers";
 
-const launchChrome = (port: number = 3005) => {
-  const chromePath = getChromePath();
+const launchChrome = (port: number = 3005, browser?: string | null) => {
+  const chromePath =browser? browser :  getChromePath();
 
   if (!chromePath) {
     throw new Error(
