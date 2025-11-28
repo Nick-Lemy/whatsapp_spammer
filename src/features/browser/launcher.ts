@@ -1,9 +1,10 @@
 import { spawn } from "child_process";
 import { platform } from "os";
-import { getChromePath } from "./helpers";
+import { detectBrowser } from "./detector";
 
-const launchChrome = (port: number = 3005, browser?: string | null) => {
-  const chromePath =browser? browser :  getChromePath();
+
+const launchBrowser = (port: number = 3005, browser?: string | null) => {
+  const chromePath = browser ? browser : detectBrowser();
 
   if (!chromePath) {
     throw new Error(
@@ -29,4 +30,4 @@ const launchChrome = (port: number = 3005, browser?: string | null) => {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 };
 
-export default launchChrome;
+export default launchBrowser;

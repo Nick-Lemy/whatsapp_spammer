@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import process from "node:process";
-import { launchChrome, sendWhatsappMessage } from "./src/features";
+import { launchBrowser, sendWhatsappMessage } from "./src/features";
 
 const args = process.argv.slice(2);
 
@@ -39,7 +39,7 @@ for (let i = 2; i < args.length; i++) {
 
 async function main() {
   try {
-    await launchChrome(port, browser);
+    await launchBrowser(port, browser);
     await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
     throw error;
