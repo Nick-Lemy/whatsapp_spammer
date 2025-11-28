@@ -1,11 +1,11 @@
 import { execSync } from "child_process";
 import { platform } from "os";
-import { BrowserPaths } from "./constants";
+import { browserPaths } from "./constants";
 
 const detectBrowser = (): string | null => {
 
   const os = platform();
-  const osPaths = BrowserPaths[os] || BrowserPaths.linux;
+  const osPaths = browserPaths[os] || browserPaths.linux;
 
   for (const path of osPaths) {
     const result = commandExists(path, os);
