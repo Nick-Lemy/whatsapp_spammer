@@ -1,2 +1,3 @@
 const WHATSAPP_LOAD_TIMEOUT_MS = 120000;
-export { WHATSAPP_LOAD_TIMEOUT_MS };
+const WHATSAPP_WEB_URL = "https://web.whatsapp.com"
+export { WHATSAPP_LOAD_TIMEOUT_MS, WHATSAPP_WEB_URL };

@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import { WHATSAPP_LOAD_TIMEOUT_MS } from "../../shared/contants";
+import { WHATSAPP_LOAD_TIMEOUT_MS, WHATSAPP_WEB_URL } from "../../shared/contants";
 import { messageBoxSelectorCandidates, searchSelector } from "./selectors";
 
 const sendWhatsappMessage = async (
@@ -13,7 +13,7 @@ const sendWhatsappMessage = async (
   });
   const pages = await browser.pages();
   const page = pages[0];
-  await page.goto("https://web.whatsapp.com", {
+  await page.goto(WHATSAPP_WEB_URL, {
     waitUntil: "networkidle2",
     timeout: WHATSAPP_LOAD_TIMEOUT_MS,
   });
