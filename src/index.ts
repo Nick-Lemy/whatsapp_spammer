@@ -4,10 +4,10 @@ import { launchBrowser, sendWhatsappMessage } from "./features";
 const args = process.argv.slice(2);
 if (args.length < 2) {
   console.error(
-    "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]"
+    "Usage: whatsapp-spammer-cli <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]",
   );
   console.error(
-    "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome"
+    "Example: whatsapp-spammer-cli 'John' 'Hello' --port 3005 --count 10 --browser chrome",
   );
   process.exit(1);
 }
@@ -30,10 +30,10 @@ for (let i = 2; i < args.length; i++) {
     i++;
   } else if (args[i] === "--help" || args[i] === "-h") {
     console.log(
-      "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]"
+      "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]",
     );
     console.log(
-      "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome"
+      "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome",
     );
     process.exit(0);
   }
@@ -44,9 +44,7 @@ async function main() {
     await launchBrowser(port, browser);
     await sendWhatsappMessage(contact, message, port, numberOfMessages);
   } catch (error) {
-    console.error(
-      "Unexpected error occurred:", (error as Error).message
-    );
+    console.error("Unexpected error occurred:", (error as Error).message);
     process.exit(1);
   }
 }
