@@ -30,7 +30,7 @@ for (let i = 2; i < args.length; i++) {
     i++;
   } else if (args[i] === "--help" || args[i] === "-h") {
     console.log(
-      "Usage: npm run dev <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]",
+      "Usage: whatsapp-spammer-cli <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]",
     );
     console.log(
       "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome",
