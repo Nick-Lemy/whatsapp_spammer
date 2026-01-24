@@ -33,7 +33,7 @@ for (let i = 2; i < args.length; i++) {
       "Usage: whatsapp-spammer-cli <contact> <message> [--port PORT] [--count NUMBER] [--browser BROWSER]",
     );
     console.log(
-      "Example: npm run dev 'John' 'Hello' --port 3005 --count 10 --browser chrome",
+      "Example: whatsapp-spammer-cli 'John' 'Hello' --port 3005 --count 10 --browser chrome",
     );
     process.exit(0);
   }
