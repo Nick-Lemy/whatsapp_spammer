@@ -61,15 +61,15 @@ whatsapp-spammer "Bob" "Hello" --browser /usr/bin/chromium
 ```bash
 git clone https://github.com/Nick-Lemy/whatsapp_spammer.git
 cd whatsapp_spammer
-pnpm install
-pnpm run dev "John Doe" "Hello!" --count 5
+bun install
+bun run dev "John Doe" "Hello!" --count 5
 ```
 
 Build from source:
 
 ```bash
-pnpm run build
-pnpm start "John Doe" "Hello!" --count 5
+bun run build
+bun start "John Doe" "Hello!" --count 5
 ```
 
 ## Project Structure
